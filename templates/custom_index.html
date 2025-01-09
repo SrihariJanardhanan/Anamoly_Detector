@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCTV Surveillance System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>CCTV Surveillance System - {{street_name}}</h1>
+    </header>
+    <main>
+        <section id="video-upload">
+            <!-- <h2>Upload Video</h2>
+            <input type="file" accept="video/*" id="video-input" style="display: none;">
+            <label for="video-input" id="upload-button">Choose a Video</label>
+            <video controls id="video-player" style="display: none;"></video> -->
+            <form action="/dashboard/{{street_name}}" method="POST" enctype="multipart/form-data">
+                <input type="file" accept="video/*" name="video" id="video-input">
+                <!-- <label type="submit" for="video-input">Choose a Video</label> -->
+                <button id="upload-button" type="submit">Upload</button>
+                <video controls  id="video-player">
+                    <source src="{{ url_for('uploaded_file', filename=video_filename) }}" type="video/mp4">
+                </video>
+            </form>            
+        </section>
+        {% if predict %}
+        <div id="predict-container">
+            <button id="predict-button" onclick="predict()">Predict</button>
+            <!-- <p class="warning-message">Use only when necessary</p> -->
+        </div>
+        {% endif %}
+
+        <div id="report-container">
+            <a href="/report" class="redirect-button">Street Report</a>
+        </div>
+    </main>
+    <script>
+        function predict() {
+        // Replace with your code to send a notification or alert
+        data = {
+            filename: "{{video_filename}}",
+            street_name: "{{street_name}}"
+        }
+
+        options = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'post',
+            body: JSON.stringify(data)
+        }
+
+        url = 'http://127.0.0.1:5000/predict'
+
+        fetch(url, options).then(
+            res => res.json()
+        ).then(
+            res => {
+                if (res['output'] == 'Anomaly') {
+                    alert("Alert🚨🚨🚨 Anomaly Detected🚨🚨🚨")
+                }
+            }
+        ).catch(err => console.log(err))
+    }
+    </script>
+</body>
+</html>

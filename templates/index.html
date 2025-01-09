@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./static/hacker-theme.css">
+    <title>Anomaly Detection and Work Monitoring Dashboard</title>
+    <style>
+        /* Global Styles */
+        body {
+            background-image: url('./static/matrix.png");
+            /* Replace with your railway-themed background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: 'Helvetica', Arial Black, sans-serif;
+            /* Use Roboto font for a robotic look */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #0f0f0f;
+            color: #00ff00;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            margin-right: 10px;
+        }
+
+        .dashboard-heading {
+            font-family: 'Helvetica', 'Arial Black', sans-serif;
+            /* Robotic font */
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <img class="logo" src="./static/irctc_logo.png" alt="IRCTC Logo" width="100">
+            <h1 class="dashboard-heading">Anomaly Detection and Workl Monitoring Dashboard</h1>
+        </div>
+    </div>
+    <div>
+        <div class="box-container" style="
+    text-align: center;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    padding-top: 2%;
+    margin: auto;
+    /* left: 50%; */
+    /* border: 2px solid black; */
+">
+            <h1>Video Upload</h1>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" name="video" accept="video/*">
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

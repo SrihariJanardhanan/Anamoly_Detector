@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowd Monitoring Dashboard - Uploaded Video</title>
+    <style>
+        /* Global Styles */
+        body {
+            background-image: url('your-railway-image.jpg'); /* Replace with your railway-themed background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: 'Roboto', Arial, sans-serif; /* Use Roboto font for a robotic look */
+            margin: 0;
+            padding: 0;
+        }
+        /* Header Styles */
+        .header {
+            background-color: #0f0f0f;
+            color: #00ff00;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            margin-right: 10px;
+        }
+        .dashboard-heading {
+            font-family: 'Roboto', 'Arial Black', sans-serif; /* Robotic font */
+            font-size: 24px;
+        }
+        /* Video Styles */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        video {
+            width: 800px;
+            height: 600px;
+        }
+        /* Alert Styles */
+        .predict-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .predict-button {
+            background-color: #ff0000; /* Red color for the button */
+            color: #fff; /* White text color */
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 8px;
+        }
+        .warning-message {
+            font-size: 12px;
+            color: #ff0000; /* Red text color for warning */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <img class="logo" src="/static/irctc_logo.png" alt="IRCTC Logo" width="100">
+            <h1 class="dashboard-heading">Crowd Monitoring Dashboard</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <video controls>
+                <source src="{{ url_for('uploaded_file', filename=video_filename) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <!-- Alert Personnel Section -->
+        <div class="predict-container">
+            <button class="predict-button" onclick="predict()">Predict</button>
+            <!-- <p class="warning-message">Use only when necessary</p> -->
+        </div>
+    </div>
+
+    <script>
+        function predict() {
+            // Replace with your code to send a notification or alert
+            data = {
+                filename: "{{video_filename}}"
+            }
+
+            options = {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: 'post',
+                body: JSON.stringify(data)
+            }
+
+            url = 'http://127.0.0.1:5000/predict'
+
+            fetch(url, options).then(
+                res => res.json()
+            ).then(
+                res => {
+                    if (res['output'] == 'Anomaly') {
+                        alert("Alert🚨🚨🚨 Anomaly Detected🚨🚨🚨")
+                    }
+                }
+            ).catch(err => console.log(err))
+        }
+    </script>
+</body>
+</html>

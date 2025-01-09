@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streets</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='street.css') }}">
+</head>
+<body>
+    <h1>Streets</h1>
+    <div class="container" style="background-image: url('{{ url_for('static', filename='street1.jpg') }}');">
+        <a href="/dashboard/street1" class="street-link">Street 1</a>
+    </div>
+    <div class="container" style="background-image: url('{{ url_for('static', filename='street2.jpg') }}');">
+        <a href="{{ url_for('dashboard', street_name='Street 2') }}" class="street-link">Street 2</a>
+    </div>
+    <!-- Add more containers as needed -->
+</body>
+</html>

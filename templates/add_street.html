@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Street</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='street.css') }}">
+</head>
+<body>
+    <h1>Add Street</h1>
+    <form method="POST" action="/add_street">
+        <label for="street_name">Street Name:</label>
+        <input type="text" name="street_name" id="street_name" required>
+        <label for="address">Address:</label>
+        <input type="text" name="address" id="address" required>
+        <button type="submit">Add Street</button>
+    </form>
+    <br>
+    <a href="/dashboard">Back to Dashboard</a>
+</body>
+</html>

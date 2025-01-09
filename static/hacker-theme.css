@@ -1,0 +1,109 @@
+/* Reset some default styles for a cleaner canvas */
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #0f0;
+  font-family: 'Courier New', monospace;
+}
+
+/* Create a blinking cursor animation */
+@keyframes blink {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Apply the blinking cursor to all elements with class 'blink' */
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Style headers with a green glow */
+h1, h2, h3 {
+  color: #0f0;
+  text-shadow: 0 0 10px #0f0;
+}
+
+/* Add some retro terminal styling to code blocks */
+pre {
+  background-color: #000;
+  border: 2px solid #0f0;
+  padding: 20px;
+  overflow: auto;
+  max-width: 100%;
+}
+
+/* Style links with a neon green color */
+a {
+  color: #0f0;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Add a green border to input and textarea elements */
+input[type="text"],
+textarea {
+  border: 1px solid #0f0;
+}
+
+/* Style buttons with a cyberpunk aesthetic */
+.button {
+  background-color: #00f;
+  color: #0f0;
+  border: 2px solid #0f0;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+  background-color: #0f0;
+  color: #00f;
+}
+
+/* Style blockquotes with a green border */
+blockquote {
+  border-left: 3px solid #0f0;
+  padding-left: 10px;
+}
+
+/* Customize scrollbar styles for WebKit browsers */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0f0;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #000;
+}
+
+/* Apply the 'matrix' class to create a matrix-like effect */
+.matrix {
+  background-color: #000;
+  color: #0f0;
+  font-size: 16px;
+  white-space: pre;
+}
+
+/* Add a flickering effect to text with the 'flicker' class */
+.flicker {
+  animation: blink 0.1s infinite;
+}
+
+/* Add a glowing effect to text with the 'glow' class */
+.glow {
+  text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
+  animation: glow 1s infinite alternate;
+}
